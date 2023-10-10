@@ -1,6 +1,7 @@
 import math
+import numpy as np
 
-# All functions are between 1 and 100 inclusive, whole numbers
+# All functions are between 0 and 99 inclusive, whole numbers
 def exponential(x):
     return math.exp(x/25)
 
@@ -16,5 +17,11 @@ def absolute(x):
 def ellipse(x):
     return math.sqrt(abs(x*(100-x)))
 
+def normal(x, m=50, s=12):
+    return 1 / (s * math.sqrt(2 * math.pi)) * np.exp(-1 / 2 * ((x - m) / s)**2)
+
 def upside_normal(x):
-    return 50 - 1000/(math.sqrt(2*math.pi) * 12) * math.exp(-1/2 * ((x-50)/12)**2)
+    return 50 - 1000*normal(x, 50, 12)
+
+def quadratic(x):
+    return (x-50)**2 / 25
